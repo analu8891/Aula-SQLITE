@@ -59,13 +59,20 @@ cursor = conexao.cursor()
 
 #função listar dados no banco 
 #Consultar os dados no banco
-cursor.execute("SELECT * FROM alunos")
-#fetchall traz todas as linhas da consulta 
-for linha in cursor.fetchall():
-    print(f"ID: {linha[0]} | NOME: {linha[1]} | IDADE: {linha[2]} | CURSO: {linha[3]}")
-print("-"*60)
-pesquisar = input("digite o curso que deseja pesquisar os alunos:")
-cursor.execute("SELECT nome,idade FROM alunos WHERE curso = ?", (pesquisar,))
-print(f"Alunos do curso de {pesquisar}")
-for linha in cursor.fetchall():
-    print(f"NOME: {linha[0]} | IDADE: {linha[1]}")
+# cursor.execute("SELECT * FROM alunos")
+# #fetchall traz todas as linhas da consulta 
+# for linha in cursor.fetchall():
+#     print(f"ID: {linha[0]} | NOME: {linha[1]} | IDADE: {linha[2]} | CURSO: {linha[3]}")
+# print("-"*60)
+# pesquisar = input("digite o curso que deseja pesquisar os alunos:")
+# cursor.execute("SELECT nome,idade FROM alunos WHERE curso = ?", (pesquisar,))
+# print(f"Alunos do curso de {pesquisar}")
+# for linha in cursor.fetchall():
+#     print(f"NOME: {linha[0]} | IDADE: {linha[1]}")
+
+
+#deletar dados do banco
+cursor.execute("DELETE FROM alunos WHERE id = ?", (1,))
+conexao.commit()
+#sempre fexhar a conexãocom o banco de dados 
+conexao.close()
